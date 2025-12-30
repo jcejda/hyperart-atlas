@@ -1,15 +1,16 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import HyperartPopupCard from "./HyperartPopupCard";
 
+// Mock map data (later replaced by GET /hyperart)
 const hyperartEntries = [
   {
     id: 1,
-    title: "Genesis of Hyperart",
+    title: "Unused Staircase",
     latitude: 35.6895,
     longitude: 139.6917,
     thumbnailUrl:
-      "https://static.wixstatic.com/media/3864b1_2272d7f629504323bad460219d3efd8a~mv2.png/v1/fill/w_756,h_551,al_c,q_90,enc_avif,quality_auto/3864b1_2272d7f629504323bad460219d3efd8a~mv2.png",
-    uploadedBy: "agenpei",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Stairs_example.jpg/320px-Stairs_example.jpg",
+    uploadedBy: "akasegawa",
   },
   {
     id: 2,
@@ -17,19 +18,18 @@ const hyperartEntries = [
     latitude: 51.5074,
     longitude: -0.1278,
     thumbnailUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/8/8c/%E3%83%88%E3%83%9E%E3%82%BD%E3%83%B3%E9%9A%8E%E6%AE%B5_%285104257679%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Door_example.jpg/320px-Door_example.jpg",
     uploadedBy: "londonwalker",
   },
   {
     id: 3,
-    title: null, // intentionally unnamed
+    title: null, // unnamed entry to test optional title
     latitude: 40.7128,
     longitude: -74.006,
-    thumbnailUrl: null,
+    thumbnailUrl: null, // no photo to test optional thumbnail
     uploadedBy: "anonymous",
   },
 ];
-
 
 function WorldMap() {
   return (
@@ -44,10 +44,7 @@ function WorldMap() {
       />
 
       {hyperartEntries.map((entry) => (
-        <Marker
-          key={entry.id}
-          position={[entry.latitude, entry.longitude]}
-        >
+        <Marker key={entry.id} position={[entry.latitude, entry.longitude]}>
           <Popup>
             <HyperartPopupCard hyperart={entry} />
           </Popup>
