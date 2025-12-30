@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HyperartPopupCard({ hyperart }) {
   const {
     id,
@@ -51,8 +53,8 @@ function HyperartPopupCard({ hyperart }) {
       </div>
 
       {/* Link */}
-      <a
-        href={`/hyperart/${id}`}
+      <Link
+        to={`/hyperart/${id}`}
         style={{
           fontSize: "12px",
           color: "#1d4ed8",
@@ -60,7 +62,8 @@ function HyperartPopupCard({ hyperart }) {
         }}
       >
         View full entry →
-      </a>
+      </Link>
+
     </div>
   );
 }
