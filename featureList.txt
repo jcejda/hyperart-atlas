@@ -1,0 +1,3 @@
+Use this document to aggregate all desired future features so they are not forgotten:
+- Require at least one image for a submission. Otherwise, hard to verify.
+- If no entry is found somehow when clicking for more details, add option to route back to main page.
