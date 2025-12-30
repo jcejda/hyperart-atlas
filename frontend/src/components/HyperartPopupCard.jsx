@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import HyperartMetadata from "./HyperartMetadata";
 
 function HyperartPopupCard({ hyperart }) {
+  // Defensive guard — prevents crashes if data is missing
+  if (!hyperart) return null;
+
   const {
     id,
     title,
@@ -27,32 +31,16 @@ function HyperartPopupCard({ hyperart }) {
         />
       )}
 
-      {/* Title */}
-      {title && (
-        <div style={{ fontWeight: "bold", marginBottom: "2px" }}>
-          {title}
-        </div>
-      )}
+      {/* Shared metadata (compact mode) */}
+      <HyperartMetadata
+        title={title}
+        uploadedBy={uploadedBy}
+        latitude={latitude}
+        longitude={longitude}
+        compact
+      />
 
-      {/* Uploaded by */}
-      {uploadedBy && (
-        <div
-          style={{
-            fontSize: "12px",
-            color: "#777",
-            marginBottom: "4px",
-          }}
-        >
-          Uploaded by {uploadedBy}
-        </div>
-      )}
-
-      {/* Coordinates */}
-      <div style={{ fontSize: "12px", color: "#555", marginBottom: "6px" }}>
-        {latitude.toFixed(4)}, {longitude.toFixed(4)}
-      </div>
-
-      {/* Link */}
+      {/* Link to detail page */}
       <Link
         to={`/hyperart/${id}`}
         style={{
@@ -63,7 +51,6 @@ function HyperartPopupCard({ hyperart }) {
       >
         View full entry →
       </Link>
-
     </div>
   );
 }
